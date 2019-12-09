@@ -1,6 +1,6 @@
-package Factory.support;
+package org.litespring.beans.factory.support;
 
-import Factory.BeanDefinition;
+import org.litespring.beans.factory.BeanDefinition;
 
 /**
  * @author YYDCYY
@@ -13,7 +13,7 @@ public class GenericBeanDefinition implements BeanDefinition {
     //构造器
     public GenericBeanDefinition(String id, String beanClassName) {
         this.id = id;
-        this.beanClassName = beanClassName
+        this.beanClassName = beanClassName;
     }
 
     public String getBeanClassName() {

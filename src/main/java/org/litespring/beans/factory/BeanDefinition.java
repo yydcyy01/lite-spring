@@ -1,4 +1,4 @@
-package Factory;
+package org.litespring.beans.factory;
 
 /**
  * @author YYDCYY
