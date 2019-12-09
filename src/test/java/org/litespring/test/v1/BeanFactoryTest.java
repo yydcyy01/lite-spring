@@ -3,6 +3,7 @@ package org.litespring.test.v1;
 import org.junit.Assert;
 import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanDefinition;
+import org.litespring.beans.factory.BeanDefinitionStoreException;
 import org.litespring.beans.factory.BeanFactory;
 import org.litespring.beans.factory.support.DefaultBeanFactory;
 import org.litespring.service.v1.PetStoreService;
@@ -36,9 +37,21 @@ public class BeanFactoryTest {
             // 试图获取一个 invalidBean [ 不存在的 ]
             factory.getBean("invalidBean");
         } catch (BeanCreationException e) {
+            //System.out.println("啥  ? ");
             return;
         }
         Assert.fail("expect BeanCreationException ");
 
+    }
+
+    @Test
+    public void testInvalidXML() {
+        try {
+            new DefaultBeanFactory("xxxxx.xml");
+        } catch (BeanDefinitionStoreException e) {
+            // TODO: handle exception
+            return;
+        }
+        Assert.fail("expect BeanDefinitionStoreExeption");
     }
 }

@@ -1,5 +1,6 @@
 package org.litespring.beans.factory.support;
 
+import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanDefinition;
 import org.litespring.beans.factory.BeanFactory;
 import org.dom4j.Document;
@@ -81,7 +82,7 @@ public class DefaultBeanFactory implements BeanFactory {
     public Object getBean(String beanID) {
         BeanDefinition bd = this.getBeanDefinition(beanID);
         if (bd == null){
-            return null;
+            throw new BeanCreationException("Bean Definition does not exist  ");
         }
         ClassLoader cl = ClassUtils.getDefaultClassLoader();
         String beanClassName = bd.getBeanClassName();
@@ -91,14 +92,8 @@ public class DefaultBeanFactory implements BeanFactory {
             //有个假设 : 类有缺省无参参数 [ 后续完善处理. ]
             Class<?> clz = cl.loadClass(beanClassName);
             return clz.newInstance();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e){
-            e.printStackTrace();
-        } catch (IllegalAccessException e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new BeanCreationException("Failed to obtain BeanInfo for class [" + bd.getBeanClassName() + "]", e);
         }
-
-        return null;
     }
 }
