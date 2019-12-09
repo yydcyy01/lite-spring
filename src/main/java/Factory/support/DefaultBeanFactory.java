@@ -44,6 +44,7 @@ public class DefaultBeanFactory implements BeanFactory {
                 Element ele = (Element) iter.next();
                 String id = ele.attributeValue(ID_ATTRIBUTE);
                 String beanClassName = ele.attributeValue(CLASS_ATTRIBUTE);
+                // BeanDefinition 为接口, 需要自己实现一个类
                 BeanDefinition bd = new GenericBeanDefinition(id, beanClassName);
                 this.beanDefinitionMap.put(id, bd);
             }
