@@ -1,5 +1,7 @@
 package org.litespring.test.v1;
 
+import org.junit.Assert;
+import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanDefinition;
 import org.litespring.beans.factory.BeanFactory;
 import org.litespring.beans.factory.support.DefaultBeanFactory;
@@ -26,5 +28,17 @@ public class BeanFactoryTest {
         PetStoreService petStore = (PetStoreService) factory.getBean("petStore");
 
         assertNotNull(petStore);
+    }
+    @Test
+    public void testInvalidBean(){
+        BeanFactory factory = new DefaultBeanFactory("petstore-v1.xml");
+        try {
+            // 试图获取一个 invalidBean [ 不存在的 ]
+            factory.getBean("invalidBean");
+        } catch (BeanCreationException e) {
+            return;
+        }
+        Assert.fail("expect BeanCreationException ");
+
     }
 }
