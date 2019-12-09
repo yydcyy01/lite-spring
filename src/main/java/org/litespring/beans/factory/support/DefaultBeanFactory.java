@@ -2,6 +2,7 @@ package org.litespring.beans.factory.support;
 
 import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanDefinition;
+import org.litespring.beans.factory.BeanDefinitionStoreException;
 import org.litespring.beans.factory.BeanFactory;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -56,8 +57,7 @@ public class DefaultBeanFactory implements BeanFactory {
                 this.beanDefinitionMap.put(id, bd);
             }
         } catch (DocumentException e) {
-            // TODO 跑出异常
-            e.printStackTrace();
+            throw new BeanDefinitionStoreException("IOException parsing XML document is not exist ");
         }finally {
             if (is != null) {
                 try {
