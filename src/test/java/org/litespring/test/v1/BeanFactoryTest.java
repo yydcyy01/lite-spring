@@ -1,9 +1,9 @@
-package litespring.test.v1;
+package org.litespring.test.v1;
 
 import Factory.BeanDefinition;
 import Factory.BeanFactory;
 import Factory.support.DefaultBeanFactory;
-import litespring.service.v1.PetStoreService;
+import org.litespring.service.v1.PetStoreService;
 import org.junit.Test;
 
 

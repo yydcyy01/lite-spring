@@ -1,4 +1,4 @@
-package litespring.service.v1;
+package org.litespring.service.v1;
 
 /**
  * @author YYDCYY

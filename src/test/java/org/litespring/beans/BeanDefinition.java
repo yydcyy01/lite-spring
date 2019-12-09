@@ -1,4 +1,4 @@
-package litespring.beans;
+package org.litespring.beans;
 
 /**
  * @author YYDCYY
