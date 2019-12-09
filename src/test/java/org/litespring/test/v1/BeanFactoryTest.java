@@ -13,9 +13,6 @@ import static org.junit.Assert.assertNotNull;
 /**
  * @author YYDCYY
  * @create 2019-12-09
- *
- *
- *
  */
 public class BeanFactoryTest {
     @Test
