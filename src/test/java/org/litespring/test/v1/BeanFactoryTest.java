@@ -23,7 +23,7 @@ public class BeanFactoryTest {
         BeanFactory factory = new DefaultBeanFactory("petstore-v1.xml");
         BeanDefinition bd = factory.getBeanDefinition("petStore");
 
-        // 导入了静态类, 直接使用
+        // 导入了静态类, 直接使 用
         assertEquals("org.litespring.service.v1.PetStoreService", bd.getBeanClassName());
 
         PetStoreService petStore = (PetStoreService) factory.getBean("petStore");
@@ -40,7 +40,7 @@ public class BeanFactoryTest {
             //System.out.println("啥  ? ");
             return;
         }
-        Assert.fail("expect BeanCreationException ");
+        Assert.fail("expect BeanCreationException  ");
 
     }
 
