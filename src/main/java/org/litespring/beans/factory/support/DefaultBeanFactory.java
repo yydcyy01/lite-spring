@@ -3,6 +3,7 @@ package org.litespring.beans.factory.support;
 import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanFactory;
+import org.litespring.beans.factory.config.ConfigurableBeanFactory;
 import org.litespring.util.ClassUtils;
 
 import java.util.Map;
@@ -13,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author YYDCYY
  * @create 2019-12-09
  */
-public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry{
+public class DefaultBeanFactory implements ConfigurableBeanFactory, BeanDefinitionRegistry{
 
     /**
      * 注 : 这里为了省事, 并没有处理线程安全问题, 仅仅使用 HashMap 保存了下来
@@ -56,5 +57,13 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry{
         } catch (Exception e) {
             throw new BeanCreationException("Failed to obtain BeanInfo for class [" + bd.getBeanClassName() + "]", e);
         }
+    }
+
+    public void setBeanClassLoader(ClassLoader beanClassLoader) {
+
+    }
+
+    public ClassLoader getBeanClassLoader() {
+        return null;
     }
 }
