@@ -35,7 +35,7 @@ public class XmlBeanDefinitionReader {
      * 问题是怎么变成InputStream ? 通过类加载, dom4j 便利处理
      * @param configFile
      */
-    private void loadBeanDefinition(String configFile) {
+    public void loadBeanDefinitions(String configFile) {
         InputStream is = null;
         try {
             ClassLoader cl = ClassUtils.getDefaultClassLoader();

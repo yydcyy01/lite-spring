@@ -2,16 +2,9 @@ package org.litespring.beans.factory.support;
 
 import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.factory.BeanCreationException;
-import org.litespring.beans.factory.BeanDefinitionStoreException;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
+import org.litespring.beans.factory.BeanFactory;
 import org.litespring.util.ClassUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -20,18 +13,21 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author YYDCYY
  * @create 2019-12-09
  */
-public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
+public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry{
 
-   public static final String ID_ATTRIBUTE = "id";
-   public static final String CLASS_ATTRIBUTE = "class";
+    /**
+     * 注 : 这里为了省事, 并没有处理线程安全问题, 仅仅使用 HashMap 保存了下来
+     */
    private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
 
    // 构造器
-    public DefaultBeanFactory (String configFile) {
-        loadBeanDefinition(configFile);
+    public DefaultBeanFactory () {
+
     }
 
-
+    public void registerBeanDefinition(String beanID, BeanDefinition bd) {
+        this.beanDefinitionMap.put(beanID, bd);
+    }
 
     public BeanDefinition getBeanDefinition(String beanID) {
         return this.beanDefinitionMap.get(beanID);
@@ -41,7 +37,6 @@ public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
 
     /**
      * 作用 : BeanDefinition 转变成 bean instance实例.
-     * 如何实现 ?
      * @param beanID
      * @return
      */
@@ -61,9 +56,5 @@ public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
         } catch (Exception e) {
             throw new BeanCreationException("Failed to obtain BeanInfo for class [" + bd.getBeanClassName() + "]", e);
         }
-    }
-
-    public void registerBeanDefinition(String id, BeanDefinition bd) {
-
     }
 }
