@@ -18,8 +18,8 @@ public class FileSystemResource implements Resource {
 
     public FileSystemResource(String path) {
         Assert.notNull(path,"path must not be null");
-        this.file=new File(path);
-        this.path=path;
+        this.file = new File(path);
+        this.path = path;
     }
 
     public InputStream getInputStream() throws IOException {

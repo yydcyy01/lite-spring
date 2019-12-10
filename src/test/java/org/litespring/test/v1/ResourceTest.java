@@ -32,8 +32,12 @@ public class ResourceTest {
 
     @Test
     public void testFileSystemResource() throws IOException {
-        Resource r=new FileSystemResource("src/test/resources/petstore-v1.xml");
-        //Resource r=new FileSystemResource("D:\\litespring-workspace\\mylitespring\\src\\test\\resources\\petstore-v1.xml");
+        //测试类中这样写是不对的. 与环境相关性太大
+        //Resource r=new FileSystemResource("/Users/yuyang/IdeaProjects/lite-spring/src/test/resource/petstore-v1.xml");
+        // 写相对路径要好一点
+        Resource r=new FileSystemResource("src/test/resource/petstore-v1.xml");
+
+
         InputStream is=null;
         try {
             is=r.getInputStream();
