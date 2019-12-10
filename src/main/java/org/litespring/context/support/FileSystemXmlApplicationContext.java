@@ -10,24 +10,15 @@ import org.litespring.core.io.Resource;
  * @author YYDCYY
  * @create 2019-12-10
  */
-public class FileSystemXmlApplicationContext implements ApplicationContext {
-    private DefaultBeanFactory factory = null;
+public class FileSystemXmlApplicationContext extends AbstractApplicationContext {
 
-    /**
-     * 构造器
-     * 按类路径加载配置文件
-     * @param configFile
-     */
     public FileSystemXmlApplicationContext(String configFile) {
-        factory = new DefaultBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
-        Resource resource = new FileSystemResource(configFile);
-        reader.loadBeanDefinitions(resource);
+        super(configFile);
+        // TODO Auto-generated constructor stub
     }
 
-
-
-    public Object getBean(String beanID) {
-        return factory.getBean(beanID);
+    @Override
+    protected Resource getResourceByPath(String path) {
+        return new FileSystemResource(path);
     }
 }

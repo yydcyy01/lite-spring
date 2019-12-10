@@ -27,8 +27,8 @@ public class ApplicationContextTest {
    @Test
     public void testGetBeanFromFileSystemContext() {
         //hardcode 不好
-        //ApplicationContext ctx=new FileSystemXmlApplicationContext("D:\\litespring-workspace\\mylitespring\\src\\test\\resources\\petstore-v1.xml");
-        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/test/resources/petstore-v1.xml");
+        //ApplicationContext ctx=new FileSystemXmlApplicationContext("/Users/yuyang/IdeaProjects/lite-spring/src/test/resource/petstore-v1.xml");
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/test/resource/petstore-v1.xml");
         PetStoreService petStore = (PetStoreService)ctx.getBean("petStore");
         Assert.assertNotNull(petStore);
     }

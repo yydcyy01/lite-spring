@@ -3,6 +3,9 @@ package org.litespring.context.support;
 import org.litespring.beans.factory.support.DefaultBeanFactory;
 import org.litespring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.litespring.context.ApplicationContext;
+import org.litespring.core.io.ClassPathResource;
+import org.litespring.core.io.FileSystemResource;
+import org.litespring.core.io.Resource;
 
 /**
  * @author YYDCYY
@@ -10,23 +13,15 @@ import org.litespring.context.ApplicationContext;
  * 02 从零开始造 Spring.md 笔记中的类图
  * 详情见
  */
-public class ClassPathXmlApplicationContext implements ApplicationContext {
+public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
-    private DefaultBeanFactory factory = null;
-
-    /**
-     * 构造器
-     * 按类路径加载配置文件
-     * @param configFile
-     */
     public ClassPathXmlApplicationContext(String configFile) {
-        factory = new DefaultBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
-        reader.loadBeanDefinitions(configFile);
+        super(configFile);
+        // TODO Auto-generated constructor stub
     }
 
-
-    public Object getBean(String beanID) {
-        return factory.getBean(beanID);
+    @Override
+    protected Resource getResourceByPath(String path) {
+        return new ClassPathResource(path);
     }
 }
