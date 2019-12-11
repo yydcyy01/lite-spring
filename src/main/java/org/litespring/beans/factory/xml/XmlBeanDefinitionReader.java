@@ -91,11 +91,13 @@ public class XmlBeanDefinitionReader {
         while(iterator.hasNext()) {
             Element propElem = (Element)iterator.next();
             String propertyName = propElem.attributeValue(NAME_ATTRIBUTE);
+            //  ! (str !=null && str.length()>0)
             if (!StringUtils.hasLength(propertyName)) {
                 logger.fatal("Tag 'property' must have a 'name' attribute");
                 return;
             }
 
+            // 解析 value
             Object val = parsePropertyElement(propElem, bd,propertyName);
 
             PropertyValue pv = new PropertyValue(propertyName, val);
