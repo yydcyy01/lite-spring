@@ -7,6 +7,8 @@ import org.litespring.dao.v2.AccountDao;
 import org.litespring.dao.v2.ItemDao;
 import org.litespring.service.v2.PetStoreService;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -25,5 +27,11 @@ public class ApplicationContextTestV2 {
         assertNotNull(petStoreService.getAccountDao());
         assertNotNull(petStoreService.getItemDao());
 
+        // 确保就是对象实例
+        assertTrue(petStoreService.getAccountDao() instanceof AccountDao);
+        assertTrue(petStoreService.getItemDao() instanceof ItemDao);
+
+       /* assertEquals("gaobing", petStoreService.getOwner());
+        assertEquals(2, petStoreService.getVersion());*/
     }
 }
