@@ -23,7 +23,7 @@ public class CustomNumberEditor extends PropertyEditorSupport {
         this(numberClass,null,allowEmpty);
     }
 
-
+    //构造函数初始化
     public CustomNumberEditor(Class<? extends Number> numberClass,
                               NumberFormat numberFormat, boolean allowEmpty) {
 
@@ -38,20 +38,22 @@ public class CustomNumberEditor extends PropertyEditorSupport {
 
     /**
      * 判断是非为空
-     *
      * 设置值
-     *
      * 解析
      * @param text
      * @throws IllegalArgumentException
      */
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
+        //若为空,判断text 有无内容. 没有直接为 null
         if (this.allowEmpty && !StringUtils.hasText(text)) {
+            // Treat empty String as null value
             setValue(null);
         } else if (this.numberFormat!=null) {
+            // Use given NumberFormat for parsing text. 可以传入一个字符串格式.
             setValue(NumberUtils.parseNumber(text, this.numberClass,this.numberFormat));
         } else {
+            // Use default valueOf methods for parsing text. 解析文本
             setValue(NumberUtils.parseNumber(text, this.numberClass));
         }
     }

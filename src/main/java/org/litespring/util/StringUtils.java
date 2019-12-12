@@ -31,6 +31,7 @@ public abstract class StringUtils {
         return false;
     }
 
+    // 去除所有空格
     public static String trimAllWhitespace(String str) {
         if (!hasLength(str)) {
             return str;
@@ -45,5 +46,7 @@ public abstract class StringUtils {
             }
         }
         return sb.toString();
+       //TODO 先跑通 测试用例再实现功能
+       //return null;
     }
 }
