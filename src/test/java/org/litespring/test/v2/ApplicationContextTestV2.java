@@ -31,7 +31,7 @@ public class ApplicationContextTestV2 {
         assertTrue(petStoreService.getAccountDao() instanceof AccountDao);
         assertTrue(petStoreService.getItemDao() instanceof ItemDao);
 
-       /* assertEquals("gaobing", petStoreService.getOwner());
-        assertEquals(2, petStoreService.getVersion());*/
+        assertEquals("yuyang", petStoreService.getOwner());
+        //assertEquals(2, petStoreService.getVersion());
     }
 }
