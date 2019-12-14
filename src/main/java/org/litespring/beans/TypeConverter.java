@@ -7,5 +7,5 @@ import com.sun.corba.se.impl.io.TypeMismatchException;
  * @create 2019-12-12
  */
 public interface TypeConverter {
-    <T> T convertIfNecessary(Object value,Class<T> requireType) throws TypeMismatchException;
+    <T> T convertIfNecessary(Object value,Class<T> requireType) throws TypeMismatchException, org.litespring.beans.TypeMismatchException;
 }
